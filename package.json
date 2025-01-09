@@ -5,11 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "http-server src -o"
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "postbuild": "copy public\\index.html dist\\index.html && xcopy /si public\\css dist\\css",
+    "prebuild": "if exist dist (rmdir /s /q dist)"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
   }
 }
